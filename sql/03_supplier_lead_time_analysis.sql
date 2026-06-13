@@ -1,7 +1,7 @@
--- Supply Chain Inventory Risk Analysis
+-- Supply Chain Inventory Reorder Risk Analysis
 -- Supplier lead-time analysis
 --
--- Compares suppliers by lead time, stockout rate, inventory buffer, and sales volume.
+-- Compares suppliers by lead time, reorder risk, inventory buffer, and sales volume.
 
 SELECT
     supplier_id,
@@ -12,10 +12,11 @@ SELECT
 
     AVG(supplier_lead_time_days) AS avg_lead_time_days,
     AVG(inventory_level - reorder_point) AS avg_inventory_buffer,
-    AVG(stockout_flag) AS stockout_rate,
+
+    AVG(CASE WHEN inventory_level <= reorder_point THEN 1 ELSE 0 END) AS reorder_risk_rate,
 
     AVG(units_sold - demand_forecast) AS avg_forecast_error,
     AVG(ABS(units_sold - demand_forecast)) AS avg_absolute_forecast_error
 FROM supply_chain_inventory
 GROUP BY supplier_id
-ORDER BY stockout_rate DESC, avg_lead_time_days DESC;
+ORDER BY reorder_risk_rate DESC, avg_lead_time_days DESC;
