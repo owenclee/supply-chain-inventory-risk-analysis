@@ -1,4 +1,4 @@
--- Supply Chain Inventory Risk Analysis
+-- Supply Chain Inventory Reorder Risk Analysis
 -- Base table setup
 --
 -- Defines the raw inventory dataset with standardized column names.
