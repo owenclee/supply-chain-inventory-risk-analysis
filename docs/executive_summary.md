@@ -1,12 +1,13 @@
 # Executive Summary
 
-This document will be completed after the SQL analysis, Python notebooks, and Tableau dashboard are finalized.
+This document will be completed after the SQL analysis, Python notebooks, Tableau dashboard, and final project review are complete.
 
 The final executive summary will include:
 
-- Primary inventory risk findings
-- Stockout patterns by SKU, warehouse, supplier, and region
-- Forecast accuracy results
-- Supplier lead-time observations
-- Promotion-related demand and stockout patterns
-- Replenishment and inventory planning recommendations
+- Main reorder risk findings
+- Inventory buffer patterns
+- Promotion-related reorder risk patterns
+- Forecast error observations
+- Monthly trend findings
+- Replenishment planning recommendations
+- Project limitations
