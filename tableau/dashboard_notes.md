@@ -2,13 +2,13 @@
 
 ## Dashboard Title
 
-Supply Chain Inventory Risk Dashboard
+Supply Chain Inventory Reorder Risk Dashboard
 
 ## Purpose
 
-This dashboard summarizes where inventory risk appears highest across SKUs, warehouses, suppliers, and regions.
+This dashboard summarizes where inventory appears closest to replenishment pressure across SKUs, warehouses, suppliers, regions, promotions, and monthly trends.
 
-The main focus is stockout risk, inventory buffer, supplier lead time, and forecast accuracy.
+The main planning signal is reorder risk, defined as records where inventory level is at or below the reorder point.
 
 ## Main Views
 
@@ -16,30 +16,45 @@ The main focus is stockout risk, inventory buffer, supplier lead time, and forec
 
 - Total units sold
 - Total revenue
-- Overall stockout rate
 - Average inventory level
+- Average inventory buffer
+- Overall reorder risk rate
 - Average supplier lead time
+- Promotion rate
 
-### 2. Stockout Risk
+### 2. Reorder Risk by Segment
 
-- Stockout rate by warehouse
-- Stockout rate by region
-- Top stockout SKUs
-- Stockout rate by supplier
+- Reorder risk by region
+- Reorder risk by warehouse
+- Reorder risk by supplier
+- Reorder risk by SKU
 
 ### 3. Inventory Buffer
 
 - Inventory level compared with reorder point
-- SKUs at or below reorder point
-- Inventory buffer by warehouse
+- Inventory buffer group distribution
+- Average inventory buffer by segment
 
 ### 4. Forecast Accuracy
 
 - Actual units sold compared with demand forecast
-- Forecast error by SKU
-- Forecast error by warehouse
+- Forecast error by segment
+- Reorder risk by forecast bias
 
-### 5. Supplier Lead Time
+### 5. Promotion Impact
 
-- Average lead time by supplier
-- Supplier lead time compared with stockout rate
+- Reorder risk during promotion and non-promotion periods
+- Average units sold by promotion status
+- Average inventory buffer by promotion status
+
+### 6. Monthly Trend
+
+- Total units sold over time
+- Reorder risk rate over time
+- Average inventory buffer over time
+
+## Design Notes
+
+The dashboard should stay operational and easy to scan. The goal is to show where replenishment review may be needed, not to overstate the data as a confirmed stockout prediction system.
+
+Final dashboard screenshots and notes will be added after the Tableau workbook is completed.
