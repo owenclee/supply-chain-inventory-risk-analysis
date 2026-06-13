@@ -1,60 +1,37 @@
 # Tableau Dashboard Notes
 
-## Dashboard Title
+## Dashboard
 
-Supply Chain Inventory Reorder Risk Dashboard
+**Title:** Supply Chain Inventory Reorder Risk Dashboard
 
-## Purpose
+**Tableau Public Link:**  
+https://public.tableau.com/views/SupplyChainInventoryReorderRiskDashboard/ReorderRIskDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
 
-This dashboard summarizes where inventory appears closest to replenishment pressure across SKUs, warehouses, suppliers, regions, promotions, and monthly trends.
+## Dashboard Purpose
 
-The main planning signal is reorder risk, defined as records where inventory level is at or below the reorder point.
+This dashboard summarizes reorder risk across a simulated supply chain inventory dataset. Because the original `Stockout_Flag` field contained only non-stockout records, the analysis uses reorder risk as the primary planning signal.
 
-## Main Views
+Reorder risk is defined as records where inventory level is at or below the reorder point.
 
-### 1. KPI Overview
+## Dashboard Views
 
-- Total units sold
-- Total revenue
-- Average inventory level
-- Average inventory buffer
-- Overall reorder risk rate
-- Average supplier lead time
-- Promotion rate
+The dashboard includes:
 
-### 2. Reorder Risk by Segment
+- KPI overview
+- Monthly reorder risk rate
+- Reorder risk by promotion status
+- Reorder risk by risk segment
+- Average inventory buffer by risk segment
+- Highest-risk SKU-warehouse combinations
 
-- Reorder risk by region
-- Reorder risk by warehouse
-- Reorder risk by supplier
-- Reorder risk by SKU
+## Key Takeaways
 
-### 3. Inventory Buffer
+- Overall reorder risk is modest, but meaningful for planning review.
+- Reorder risk is higher during promotion periods.
+- Monthly timing shows stronger variation than region, warehouse, or supplier groupings.
+- Higher-risk SKU-warehouse combinations tend to have lower average inventory buffers.
+- The highest-risk table functions as an operational review list for replenishment planning.
 
-- Inventory level compared with reorder point
-- Inventory buffer group distribution
-- Average inventory buffer by segment
+## Data Limitation
 
-### 4. Forecast Accuracy
-
-- Actual units sold compared with demand forecast
-- Forecast error by segment
-- Reorder risk by forecast bias
-
-### 5. Promotion Impact
-
-- Reorder risk during promotion and non-promotion periods
-- Average units sold by promotion status
-- Average inventory buffer by promotion status
-
-### 6. Monthly Trend
-
-- Total units sold over time
-- Reorder risk rate over time
-- Average inventory buffer over time
-
-## Design Notes
-
-The dashboard should stay operational and easy to scan. The goal is to show where replenishment review may be needed, not to overstate the data as a confirmed stockout prediction system.
-
-Final dashboard screenshots and notes will be added after the Tableau workbook is completed.
+The dataset did not contain positive stockout records. As a result, this dashboard does not model confirmed stockout events. It instead focuses on reorder risk, inventory buffer, promotion impact, and SKU-warehouse prioritization.
