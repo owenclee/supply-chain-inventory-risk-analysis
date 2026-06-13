@@ -1,7 +1,7 @@
--- Supply Chain Inventory Risk Analysis
+-- Supply Chain Inventory Reorder Risk Analysis
 -- Core inventory KPIs
 --
--- Summarizes high-level inventory, sales, stockout, and forecast metrics.
+-- Summarizes high-level inventory, sales, reorder risk, and forecast metrics.
 
 SELECT
     COUNT(*) AS total_records,
@@ -20,7 +20,9 @@ SELECT
     AVG(inventory_level - reorder_point) AS avg_inventory_buffer,
 
     AVG(supplier_lead_time_days) AS avg_supplier_lead_time,
-    AVG(stockout_flag) AS stockout_rate,
+    AVG(promotion_flag) AS promotion_rate,
+
+    AVG(CASE WHEN inventory_level <= reorder_point THEN 1 ELSE 0 END) AS reorder_risk_rate,
 
     AVG(units_sold - demand_forecast) AS avg_forecast_error,
     AVG(ABS(units_sold - demand_forecast)) AS avg_absolute_forecast_error
