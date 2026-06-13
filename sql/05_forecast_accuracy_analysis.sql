@@ -1,4 +1,4 @@
--- Supply Chain Inventory Risk Analysis
+-- Supply Chain Inventory Reorder Risk Analysis
 -- Forecast accuracy analysis
 --
 -- Compares forecasted demand with actual units sold across key operating segments.
@@ -21,7 +21,8 @@ SELECT
         ELSE 'Neutral'
     END AS forecast_bias,
 
-    AVG(stockout_flag) AS stockout_rate,
+    AVG(inventory_level - reorder_point) AS avg_inventory_buffer,
+    AVG(CASE WHEN inventory_level <= reorder_point THEN 1 ELSE 0 END) AS reorder_risk_rate,
     AVG(promotion_flag) AS promotion_rate
 FROM supply_chain_inventory
 GROUP BY
@@ -29,4 +30,4 @@ GROUP BY
     warehouse_id,
     supplier_id,
     region
-ORDER BY avg_absolute_forecast_error DESC, stockout_rate DESC;
+ORDER BY avg_absolute_forecast_error DESC, reorder_risk_rate DESC;
